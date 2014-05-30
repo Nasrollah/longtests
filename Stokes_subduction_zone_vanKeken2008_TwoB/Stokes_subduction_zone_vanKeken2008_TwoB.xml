@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testproblem>
+  <name>vanKeken2008-Benchmark(2b)</name>
+  <owner userid="rhodrid"/>
+  <tags>flml</tags>
+  <problem_definition length="long" nprocs="8">
+    <command_line>mpiexec flredecomp -i 1 -o 8 Stokes-subduction-zone-vanKeken2008-TwoB Parallel-NP8-Stokes-subduction-zone-vanKeken2008-TwoB ; mpiexec fluidity -v2 -l Parallel-NP8-Stokes-subduction-zone-vanKeken2008-TwoB.flml</command_line>
+  </problem_definition>
+  <variables>
+    <variable name="Temperature6060" language="python">from fluidity_tools import stat_parser
+s = stat_parser("vanKekenTwoB.detectors")
+T = s["Fluid"]["Temperature"]["Temperature6060"][-1]
+Temperature6060 = T-(273.)</variable>
+    <variable name="TL2SLAB" language="python">import fluidity_tools
+import numpy
+import math
+
+from fluidity_tools import stat_parser
+s = stat_parser("vanKekenTwoB.detectors")
+
+l = len(s['Fluid']['Temperature']['TSlab_01'])
+sum = numpy.zeros(l)
+
+for n in range(36):
+     T = s["Fluid"]["Temperature"]["TSlab_" + (str(n + 1)).zfill(2)]
+     sum = sum + T*T
+
+TL2SLAB = map(math.sqrt, sum/36)<comment>Computes the L2 Temperature norm in 36 equidistant points along the slab, close to the wedge corner.</comment></variable>
+    <variable name="TL2WEDGE" language="python">import fluidity_tools
+import numpy
+import math
+
+from fluidity_tools import stat_parser
+s = stat_parser("vanKekenTwoB.detectors")
+
+l = len(s['Fluid']['Temperature']['TWedge_01'])
+sum = numpy.zeros(l)
+
+for n in range(78):
+     T = s["Fluid"]["Temperature"]["TWedge_" + (str(n + 1)).zfill(2)]
+     sum = sum + T*T
+
+TL2WEDGE = map(math.sqrt, sum/78)<comment>Computes the L2 Temperature norm for 78 points in the wedge corner.</comment></variable>
+
+    <variable name="max_load_imbalance" language="python">
+from check_partitions import *
+max_load_imbalance = calculate_partition_weights()
+      <comment>Checks flredecomp field weighted partition functionality</comment>
+    </variable>
+
+  </variables>
+  <pass_tests>
+    <test name="At point 6060, 580 .lt. T .lt. 585 " language="python">assert ( Temperature6060 &gt; 580. )
+assert ( Temperature6060 &lt; 585. )</test>
+    <test name="585 .lt. Integral of T at slab wedge interface .lt. 610 " language="python">assert ( ( TL2SLAB[-1]-273. ) &gt; 585. )
+assert ( ( TL2SLAB[-1]-273. ) &lt; 610. )</test>
+    <test name="995 .lt. Integral of T in wedge corner .lt. 1005" language="python">assert ( ( TL2WEDGE[-1]-273. ) &gt; 995. )
+assert ( ( TL2WEDGE[-1]-273. ) &lt; 1005. )</test>
+    <test name="maximum load imbalance .lt. 1.4 " language="python">
+      assert ( max_load_imbalance &lt; 1.4 )
+    </test>
+  </pass_tests>
+</testproblem>

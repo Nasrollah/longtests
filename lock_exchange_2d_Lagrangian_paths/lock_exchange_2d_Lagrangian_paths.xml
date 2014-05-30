@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testproblem SYSTEM "regressiontest.dtd">
+
+<testproblem>
+  <name>Lock_exchange</name>
+  <owner userid="agarcias"/>
+  <tags>flml</tags>
+  <problem_definition length="long" nprocs="1">
+    <command_line>mpiexec fluidity -v3 -l Lock_exchange_2d.flml </command_line>
+  </problem_definition>
+  <variables>
+    <variable name= "abc" language = "python">
+
+import fluidity_tools
+
+d=fluidity_tools.stat_parser("Lock_exchange_2d.detectors")
+
+string_name=['']
+for i in range(1,10):
+   string_name.insert(i,'Detectors_interface_00'+str(i))
+list_of_names=string_name[1:10]
+
+for i in range(10,100):
+   string_name.append('Detectors_interface_0'+str(i))
+list_of_names=string_name[1:100]
+
+string_name.append('Detectors_interface_'+str(100))
+list_of_names=string_name[1:101]
+
+a=[0.0]
+
+for i in range(len(list_of_names)):
+   da=d[list_of_names[i]]['position'][0][-1]
+   db=d[list_of_names[i]]['position'][0][-30]
+   dc=d[list_of_names[i]]['position'][1][-1]
+   dd=d[list_of_names[i]]['position'][1][-30]
+   if ((da==db) and (dc==dd)):
+      a.append(i)
+
+del string_name
+
+string_name=['']
+for i in range(1,10):
+   string_name.insert(i,'Detectors_left_00'+str(i))
+list_of_names_1=string_name[1:10]
+
+for i in range(10,100):
+   string_name.append('Detectors_left_0'+str(i))
+list_of_names_1=string_name[1:100]
+
+string_name.append('Detectors_left_'+str(100))
+list_of_names_1=string_name[1:101]
+
+b=[0.0]
+for i in range(len(list_of_names)):
+   da=d[list_of_names_1[i]]['position'][0][-1]
+   db=d[list_of_names_1[i]]['position'][0][-30]
+   dc=d[list_of_names_1[i]]['position'][1][-1]
+   dd=d[list_of_names_1[i]]['position'][1][-30]
+   if ((da==db) and (dc==dd)):
+      b.append(i)
+
+del string_name
+
+string_name=['']
+for i in range(1,10):
+   string_name.insert(i,'Detectors_right_00'+str(i))
+list_of_names_2=string_name[1:10]
+
+for i in range(10,100):
+   string_name.append('Detectors_right_0'+str(i))
+list_of_names_2=string_name[1:100]
+
+string_name.append('Detectors_right_'+str(100))
+list_of_names_2=string_name[1:101]
+
+c=[0.0]
+for i in range(len(list_of_names)):
+   da=d[list_of_names_2[i]]['position'][0][-1]
+   db=d[list_of_names_2[i]]['position'][0][-30]
+   dc=d[list_of_names_2[i]]['position'][1][-1]
+   dd=d[list_of_names_2[i]]['position'][1][-30]
+   if ((da==db) and (dc==dd)):
+      c.append(i)
+
+abc=a+b+c
+
+del string_name
+del list_of_names
+del list_of_names_1
+del list_of_names_2
+del a
+del b
+del c
+
+    </variable>
+  </variables>
+  <pass_tests>
+    <test name="Check there is no Lagrangian detector that has been converted into static" language="python">
+     assert (abc==[0.0,0.0,0.0])
+    </test>
+  </pass_tests>
+  <warn_tests>
+  </warn_tests>
+</testproblem>
