@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testproblem SYSTEM "regressiontest.dtd">
+<testproblem>
+  <name>2D salt finger adaptive</name>
+  <owner userid="fmactavish"/>
+  <tags>flml 2dadapt</tags>
+  <problem_definition length="long" nprocs="12">
+    <command_line>mpiexec ../../bin/flredecomp -i 1 -o 12 -v -l saltfinger2d_adaptive saltfinger2d_adaptive_flredecomp &amp;&amp;
+mpiexec fluidity  saltfinger2d_adaptive_flredecomp.flml </command_line>
+  </problem_definition>
+  <variables>
+    <variable name="final_time" language="python">
+from fluidity_tools import stat_parser
+s = stat_parser("saltfinger-2d.stat")
+final_time = s["ElapsedTime"]["value"][-1]
+    </variable>
+  </variables>
+  <pass_tests>
+    <test name="assert no crash" language="python">
+assert abs(final_time-0.07) &lt; 0.001
+    </test>
+  </pass_tests>
+  <warn_tests>
+  </warn_tests>
+</testproblem>

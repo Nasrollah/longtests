@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE testproblem SYSTEM "regressiontest.dtd">
+
+<testproblem>
+  <name>medp1dgp2</name>
+  <owner userid="rbn00"/>
+  <tags>flml</tags>
+  <problem_definition length="long" nprocs="4">
+    <command_line>make clean;
+mpiexec ../../bin/flredecomp -i 1 -o 4 -v -l med med_flredecomp &amp;&amp;
+mpiexec fluidity -v2 -l med_flredecomp.flml</command_line>
+  </problem_definition>
+
+<variables>  
+
+<variable name="max_depth" language="python">
+import fluidity_tools
+s=fluidity_tools.stat_parser('med.stat')
+max_depth=max(s["Fields"]["DistanceToBottom"]["max"])
+</variable>
+
+<variable name="elapsed_time" language="python">
+import fluidity_tools
+s=fluidity_tools.stat_parser('med.stat')
+elapsed_time=max(s["ElapsedTime"]["value"])
+</variable>
+
+<variable name="max_vel" language="python">
+import fluidity_tools
+s=fluidity_tools.stat_parser('med.stat')
+max_vel=max(s["Fields"]["Velocity%magnitude"]["max"])
+</variable>
+
+</variables>
+
+<pass_tests>
+
+<test name="DepthCheck:" language="python">
+assert(max_depth &lt; 6000)
+assert(max_depth &gt; 3000)
+</test>
+
+<test name="RunCheck:" language="python">
+assert(elapsed_time == 10000)
+</test>
+
+<test name="VelocityCheck:" language="python">
+assert(max_vel &lt; 0.07)
+assert(max_vel &gt; 0.06)
+</test>
+
+</pass_tests>                                                                                                                                                                                                
+
+<warn_tests>
+</warn_tests>
+
+</testproblem>
