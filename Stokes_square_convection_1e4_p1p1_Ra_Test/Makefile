@@ -8,10 +8,11 @@ default: input
 
 input: src/$(MESH).edge src/$(MESH).ele src/$(MESH).node clean
 	cp src/$(MESH).edge src/$(MESH).ele src/$(MESH).node .
+	../../bin/triangle2gmsh $(MESH)
 
 clean: clean-mesh clean-run-debug
 clean-mesh:
-	rm -f $(MESH).edge $(MESH).ele $(MESH).node
+	rm -f $(MESH).edge $(MESH).ele $(MESH).node $(MESH).msh
 clean-run:
 	rm -f $(FLMLMODEL)_?*.vtu $(FLMLMODEL)_?*_checkpoint.edge $(FLMLMODEL)_?*_checkpoint.ele $(FLMLMODEL)_?*_checkpoint.node $(FLMLMODEL)_?*_checkpoint.flml $(FLMLMODEL)_?*_?*_checkpoint.vtu $(FLMLMODEL).stat fluidity.err-0 fluidity.log-0 matrixdump matrixdump.info *.vtu *.stat *.detectors
 clean-run-debug: clean-run

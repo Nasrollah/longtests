@@ -5,10 +5,11 @@ default: input
 
 input:
 	tar -xvjf src/$(MESH).tar.bz2
+	../../bin/triangle2gmsh $(MESH)
 
 clean: clean-mesh clean-run-debug
 clean-mesh:
-	rm -f $(MESH).ele $(MESH).edge $(MESH).node
+	rm -f $(MESH).ele $(MESH).edge $(MESH).node $(MESH).msh
 	rm -f $(MESH)_?*.ele $(MESH)_?*.edge $(MESH)_?*.halo $(MESH)_?*.node decomp.log decomp_err.log
 clean-run:
 	rm -rf $(FLMLMODEL)_?*.pvtu $(FLMLMODEL)_?*.vtu $(FLMLMODEL)_?*

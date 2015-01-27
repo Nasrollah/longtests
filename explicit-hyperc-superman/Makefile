@@ -1,5 +1,5 @@
 input: clean
-	../../bin/gmsh2triangle --2d src/2d_square.msh
+	cp src/2d_square.msh .
 
 clean:
 	rm -rf *.stat explicit-hyperc-superman*.vtu *.node *.ele *.edge explicit-hyperc-superman*checkpoint* explicit-hyperc-superman*convergence*

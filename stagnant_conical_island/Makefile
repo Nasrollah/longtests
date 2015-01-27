@@ -1,6 +1,6 @@
 input:	clean
 	gmsh -2 src/2d_island.geo 
-	../../bin/gmsh2triangle --2d src/2d_island.msh
+	cp src/2d_island.msh .
 
 clean:
 	rm -rf *_checkpoint*

@@ -72,7 +72,7 @@
     </mesh>
     <mesh name="DoublyPeriodicMesh">
       <from_file file_name="MMS_C_decomped_DoublyPeriodicMesh">
-        <format name="triangle"/>
+        <format name="gmsh"/>
         <stat>
           <include_in_stat/>
         </stat>

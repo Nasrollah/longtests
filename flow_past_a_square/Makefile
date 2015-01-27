@@ -1,7 +1,6 @@
 preprocess:
 	@echo **********Creating 2D mesh
 	gmsh -2 -o flow_past_a_square.msh src/flow_past_a_square.geo
-	../../bin/gmsh2triangle --2d flow_past_a_square.msh
 
 run:
 	@echo **********Running simulation

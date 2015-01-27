@@ -466,7 +466,7 @@
     </mesh>
     <mesh name="InputMesh">
       <from_file file_name="2d_island">
-        <format name="triangle"/>
+        <format name="gmsh"/>
         <stat>
           <include_in_stat/>
         </stat>

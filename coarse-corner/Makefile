@@ -5,7 +5,6 @@ default: input
 
 input: src/$(MESH).geo
 	gmsh -3 src/$(MESH).geo -o $(MESH).msh
-	../../bin/gmsh2triangle $(MESH).msh
 
 clean: clean-mesh clean-run-debug clean-checkpoint
 clean-mesh:

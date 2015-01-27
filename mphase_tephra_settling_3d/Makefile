@@ -1,7 +1,6 @@
 preprocess:
 	@echo **********Creating 3D mesh
 	gmsh -3 -o mphase_tephra_settling_3d.msh src/mphase_tephra_settling_3d.geo
-	../../bin/gmsh2triangle mphase_tephra_settling_3d.msh
 
 run:
 	@echo **********Running simulation
@@ -13,8 +12,8 @@ input: clean preprocess
 clean:
 	rm -f *.stat *.steady_state*
 	rm -f *.d.* *.vtu
-	rm -f *.msh
-	rm -f *.ele *.edge *.node *.poly *.face *.halo
+	rm -f *.msh *.halo
+	rm -f *.poly
 	rm -f matrixdump* *.log* *.err*
 	rm -rf mphase_tephra_settling_3d_*
 	rm -rf *flredecomp*

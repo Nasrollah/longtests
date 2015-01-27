@@ -5,7 +5,7 @@ input: clean
 	cd mesh; ./makemesh.sh
 
 clean:
-	rm -f  *.ele *.edge *.node *.poly *vtu *.s *.d.1 *.stat *.msh *.detectors matrixdump* *.pdf *.png *.dat
+	rm -f  *.poly *vtu *.s *.d.1 *.stat *.msh *.halo *.detectors matrixdump* *.pdf *.png *.dat
 	cd mesh; rm -f  *.ele *.edge *.node *.poly *.vtu *.s *.d.1 *.stat *.msh *.detectors matrixdump* *.halo 
 	rm -rf *flredecomp*
 config:

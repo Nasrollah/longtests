@@ -1,6 +1,6 @@
 input:	clean
 	gmsh -3 src/inletslice.geo
-	../../bin/gmsh2triangle src/inletslice.msh
+	cp src/inletslice.msh .
 
 
 clean:
