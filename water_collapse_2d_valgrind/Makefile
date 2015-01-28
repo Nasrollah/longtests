@@ -1,5 +1,5 @@
 input: clean
-	true
+	../../bin/triangle2gmsh first_timestep_adapted_mesh
 
 clean:
 	rm -rf *.stat adapted_mesh_*.vtu water_collapse_*.vtu *checkpoint* *convergence* *.log-0 *.err-0

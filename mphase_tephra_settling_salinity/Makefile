@@ -1,5 +1,5 @@
 preprocess:
-	@echo **********Converting 2D .msh file to triangle format
+	@echo **********Generating 2D GMSH .msh file
 	gmsh -2 -o mphase_tephra_settling_salinity.msh src/mphase_tephra_settling_salinity.geo
 
 run:

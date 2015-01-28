@@ -1,4 +1,5 @@
 input: clean
+	../../bin/triangle2gmsh coarse
 
 clean:
 	rm -rf *.vtu *.pvtu
