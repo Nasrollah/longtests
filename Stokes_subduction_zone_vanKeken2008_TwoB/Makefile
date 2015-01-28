@@ -7,6 +7,6 @@ input:  clean
 	cp src/Subduction_Mesh.msh .
 
 clean:
-	rm -f  *.ele *.edge *.node *.vtu *.stat *.msh *.detectors fluidity.* *.dat *Parallel* *.pyc
+	rm -f  *.vtu *.stat src/*.msh *.msh *halo *.detectors fluidity.* *.dat *Parallel* *.pyc
 	rm -R -f $(MODEL)_*
 

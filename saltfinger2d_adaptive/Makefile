@@ -3,5 +3,5 @@ input: clean
 	gmsh -2 -algo del2d unstructured-2.geo
 
 clean:
-	rm -fr  *.ele *.face *.node saltfinger-2d_* unstructured-2.* *.edge *.stat *.halo
+	rm -fr saltfinger-2d_* unstructured-2.* *.stat *.msh *.halo
 	rm -rf *flredecomp*

@@ -12,8 +12,8 @@ input: clean preprocess
 clean:
 	rm -f *.stat *.steady_state*
 	rm -f *.d.* *.vtu
-	rm -f *.msh
-	rm -f *.ele *.edge *.node *.poly *.face
+	rm -f *.msh *halo
+	rm -f *.poly
 	rm -f matrixdump* *.log* *.err*
 	rm -rf flow_past_a_square_*
 	rm -f nohup.out

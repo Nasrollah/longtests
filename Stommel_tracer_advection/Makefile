@@ -3,4 +3,4 @@ input:
 	gmsh -2 -o Stommel2_A.msh src/Stommel2_A.geo
 
 clean:
-	rm -f *.node *.ele *.edge *.msh *.vtu *.log* *.err* *.stat *dump*
+	rm -f *.msh *.vtu *.log* *.err* *.stat *dump*

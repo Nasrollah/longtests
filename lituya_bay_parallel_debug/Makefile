@@ -4,7 +4,7 @@ input:	clean
 
 
 clean:
-	rm -f *.stat *.log* *.err* *.msh *.halo *.face *.node *.ele *.edge *.convergence *.pvtu matrixdump*
+	rm -f *.stat *.log* *.err* *.msh *.halo *.convergence *.pvtu matrixdump*
 	rm -f src/inletslice.msh
 	rm -rf *_checkpoint* 
 	rm -f landslide_*/*.vtu

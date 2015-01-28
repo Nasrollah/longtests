@@ -5,4 +5,4 @@ input:	clean
 	cp src/MMS_D.msh .
 
 clean:
-	rm -f *.vtu *.stat *.log *.node *.ele *.edge *checkpoint*
+	rm -f *.vtu *.stat *.log *.msh *checkpoint*

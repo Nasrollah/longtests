@@ -3,5 +3,4 @@ input: clean
 	../../bin/create_aligned_mesh gls-MixedLayer 250 50 -- -50 3 3 25
 
 clean: 
-	rm -f  *.ele *.edge *.node *.face *.poly *.vtu *.s  *.stat *.log-0 *.err-0 matrixdump* *log *err
-	rm -f *.msh
+	rm -f  *.msh *.poly *.vtu *.s  *.stat *.log-0 *.err-0 matrixdump* *log *err

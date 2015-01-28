@@ -4,4 +4,4 @@ input:	clean
 
 
 clean:
-	rm -f *.vtu *.stat *.log* *.err* *.msh *.halo *.node *.ele *.face *_checkpoint* *.convergence *.pvtu matrixdump*
+	rm -f *.vtu *.stat *.log* *.err* src/*.msh *.msh *_checkpoint* *.convergence *.pvtu matrixdump*

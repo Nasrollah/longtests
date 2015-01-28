@@ -6,4 +6,4 @@ input:	clean
 	cp src/MMS_E.msh .
 
 clean:
-	rm -f *.vtu *.stat *.s *.log *.node *.ele *.edge *checkpoint*
+	rm -f *.vtu *.stat *.s *.log *.msh *checkpoint*
