@@ -1,9 +1,9 @@
 preprocess:
 	@echo **********Creating 2D meshes
-	../../bin/gmsh2triangle --2d src/MMS_A.msh
-	../../bin/gmsh2triangle --2d src/MMS_B.msh
-	../../bin/gmsh2triangle --2d src/MMS_C.msh
-	../../bin/gmsh2triangle --2d src/MMS_D.msh
+	cp src/MMS_A.msh .
+	cp src/MMS_B.msh .
+	cp src/MMS_C.msh .
+	cp src/MMS_D.msh .
 
 run:
 	@echo **********Running simulations
@@ -18,5 +18,5 @@ clean:
 	rm -f *.stat *.steady_state*
 	rm -f *.d.* *.vtu
 	rm -f *.msh
-	rm -f *.ele *.edge *.node *.poly
+	rm -f *.poly
 	rm -f matrixdump* *checkpoint* *.log* *.err*

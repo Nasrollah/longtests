@@ -1,5 +1,6 @@
 input: clean
-	../../bin/gmsh2triangle ./src/unit_sphere.msh
+	cp src/unit_sphere.msh .
 
 clean:
-	rm -f *.ele *.edge *.face *.node *.halo *.poly *.vtu *.stat *.log-0 *.err-0 matrixdump*
+	rm -f *.msh *.poly *.vtu *.stat *.log-0 *.err-0 matrixdump*
+	rm -f sphere-3D-drag-Re1_*

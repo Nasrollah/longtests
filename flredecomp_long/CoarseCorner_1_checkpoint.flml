@@ -22,7 +22,7 @@
     </dimension>
     <mesh name="CoordinateMesh">
       <from_file file_name="CoarseCorner_CoordinateMesh_1_checkpoint">
-        <format name="triangle"/>
+        <format name="gmsh"/>
         <stat>
           <include_in_stat/>
         </stat>

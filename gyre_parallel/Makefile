@@ -1,6 +1,8 @@
 input: clean
+	../../bin/triangle2gmsh coarse
 
 clean:
+	rm -rf coarse.msh
 	rm -rf *.vtu *.pvtu
 	rm -rf fluidity.* *.stat
 	rm -rf *_[0-9]*.*

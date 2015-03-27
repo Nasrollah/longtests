@@ -69,10 +69,8 @@ final_checkpoint_test = {}
 final_checkpoint_test["coarse-corner_PressureMesh_6_checkpoint.pvtu"] = True
 final_checkpoint_test["coarse-corner_VelocityMesh_6_checkpoint.pvtu"] = True
 for i in range(4):
-  final_checkpoint_test["coarse-corner_CoordinateMesh_6_checkpoint_" + str(i) + ".ele"] = True
-  final_checkpoint_test["coarse-corner_CoordinateMesh_6_checkpoint_" + str(i) + ".face"] = True
+  final_checkpoint_test["coarse-corner_CoordinateMesh_6_checkpoint_" + str(i) + ".msh"] = True
   final_checkpoint_test["coarse-corner_CoordinateMesh_6_checkpoint_" + str(i) + ".halo"] = True
-  final_checkpoint_test["coarse-corner_CoordinateMesh_6_checkpoint_" + str(i) + ".node"] = True
   final_checkpoint_test["coarse-corner_PressureMesh_6_checkpoint/coarse-corner_PressureMesh_6_checkpoint_" + str(i) + ".vtu"] = True
   final_checkpoint_test["coarse-corner_VelocityMesh_6_checkpoint/coarse-corner_VelocityMesh_6_checkpoint_" + str(i) + ".vtu"] = True
 final_checkpoint_test["coarse-corner_6_checkpoint.flml"] = True

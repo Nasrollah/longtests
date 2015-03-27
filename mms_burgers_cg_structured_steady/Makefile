@@ -3,10 +3,10 @@ input:	clean
 	gmsh -2 src/MMS_B.geo
 	gmsh -2 src/MMS_C.geo
 	gmsh -2 src/MMS_D.geo
-	../../bin/gmsh2triangle --2d src/MMS_A.msh
-	../../bin/gmsh2triangle --2d src/MMS_B.msh
-	../../bin/gmsh2triangle --2d src/MMS_C.msh
-	../../bin/gmsh2triangle --2d src/MMS_D.msh
+	cp src/MMS_A.msh .
+	cp src/MMS_B.msh .
+	cp src/MMS_C.msh .
+	cp src/MMS_D.msh .
 
 clean:
-	rm -f *.vtu *.stat *.s *.log src/*.msh *.node *.ele *.edge *checkpoint*
+	rm -f *.vtu *.stat *.s *.log src/*.msh *.msh *checkpoint*

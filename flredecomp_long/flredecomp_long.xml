@@ -11,20 +11,20 @@
     <variable name = "output7_meshes" language = "python">
 import glob
     
-import fluidity.diagnostics.triangletools as triangletools
+import fluidity.diagnostics.gmshtools as gmshtools
 
 output7_meshes = []
 for i in range(7):
-  output7_meshes.append(triangletools.ReadTriangle("output7_CoordinateMesh_" + str(i)))
+  output7_meshes.append(gmshtools.ReadMsh("output7_CoordinateMesh_"+str(i)+".msh"))
     </variable>
     <variable name = "output4_meshes" language = "python">
 import glob
     
-import fluidity.diagnostics.triangletools as triangletools
+import fluidity.diagnostics.gmshtools as gmshtools
 
 output4_meshes = []
 for i in range(4):
-  output4_meshes.append(triangletools.ReadTriangle("output4_CoordinateMesh_" + str(i)))
+  output4_meshes.append(gmshtools.ReadMsh("output4_CoordinateMesh_"+str(i)+".msh"))
     </variable>
   </variables>
   <pass_tests>

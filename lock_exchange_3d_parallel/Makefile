@@ -5,8 +5,8 @@ input: clean
 
 clean: 
 	find . -name '*vtu' | xargs -n 10 rm -f
-	rm -f *.edge *.node *.face *.ele *.halo *.poly *.s
+	rm -f *.msh *.halo *.poly *.s mesh.zip
 	rm -rf *checkpoint* 
-	rm -f *.msh *.stat *.log-* *.err-* matrixdump* *~
+	rm -f *.stat *.log-* *.err-* matrixdump* *~
 	rm -rf lock_exchange_3d_*[0-9]
 	rm -rf *flredecomp*
